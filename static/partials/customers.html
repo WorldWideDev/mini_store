@@ -1,0 +1,22 @@
+<div ng-controller='custController as CC'>
+	<h2>Add a New Customer</h2>
+	Customer Name: <input type='text' ng-model='CC.newCustomer'>
+	<input type='submit' value='add.' ng-click='CC.createCustomer()'><br>
+	<input id='serch'  type='input' ng-model='filter' placeholder='search'>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Customer Name</th>
+				<th>Created Date</th>
+				<th>Actions</th>
+			</tr>
+		<tbody>
+			<tr ng-repeat='cust in CC.customers | filter: filter'>
+				<td>{{cust.name}}</td>
+				<td>{{cust.createdAt | date: "MMMM, d yyyy 'at' h:mma"}}</td>
+				<td><a ng-click='CC.delCustomer(cust)' href="">DEL</a></td>
+			</tr>
+		</tbody>
+		</thead>
+	</table>
+</div>
